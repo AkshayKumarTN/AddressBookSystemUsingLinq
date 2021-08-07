@@ -150,5 +150,21 @@ namespace AddressBookSystemUsingLinq
             }
             return false;
         }
+
+        public bool DeleteRecordUsingName(string FirstName)
+        {
+            //Calling the add values to data table
+            AddValues();
+            //performing delete operation using linq
+            var modifiedList = (from Contact in dataTable.AsEnumerable() where Contact.Field<string>("FirstName") == FirstName select Contact).FirstOrDefault();
+            if (modifiedList != null)
+            {
+                modifiedList.Delete();
+                Console.WriteLine("******* After Deletion ******");
+                Display();
+                return true;
+            }
+            return false;
+        }
     }
 }
