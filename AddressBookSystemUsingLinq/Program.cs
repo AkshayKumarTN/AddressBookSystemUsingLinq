@@ -10,9 +10,7 @@ namespace AddressBookSystemUsingLinq
             Console.WriteLine("********************************************************************************************");
 
             ContactDataManager contactDataManager = new ContactDataManager();
-            contactDataManager.CreateDataTable();
-            contactDataManager.AddValues();
-            contactDataManager.Display();
+            contactDataManager.ModifyDataTableUsingName("Sam", "address", "Ranapuram Street");
         }
     }
 }

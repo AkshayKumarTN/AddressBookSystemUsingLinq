@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 
 namespace AddressBookSystemUsingLinq
@@ -134,6 +135,20 @@ namespace AddressBookSystemUsingLinq
             {
                 Console.WriteLine("{0} | {1} | {2} | {3} | {4} | {5} | {6} | {7}\n", dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"]);
             }
+        }
+
+        // Method to Modify Data Table Using FirstName............
+        public bool ModifyDataTableUsingName(string FirstName, string ColumnName, string value )
+        {
+            AddValues();
+            var modifiedList = (from Contact in dataTable.AsEnumerable() where Contact.Field<string>("FirstName") == FirstName select Contact).LastOrDefault();
+            if (modifiedList != null)
+            {
+                modifiedList[ColumnName] = value;
+                Display();
+                return true;
+            }
+            return false;
         }
     }
 }
