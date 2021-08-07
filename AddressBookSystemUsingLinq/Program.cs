@@ -10,7 +10,9 @@ namespace AddressBookSystemUsingLinq
             Console.WriteLine("********************************************************************************************");
 
             ContactDataManager contactDataManager = new ContactDataManager();
-            contactDataManager.RetrieveCountBasedOnContactType();
+            contactDataManager.CreateDataTable();
+            contactDataManager.AddValues();
+            contactDataManager.Display();
 
         }
     }

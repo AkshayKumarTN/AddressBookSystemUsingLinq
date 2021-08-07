@@ -123,6 +123,34 @@ namespace AddressBookSystemUsingLinq
             contact2.contactId = 2;
             contact2.contactType = "Profession";
             InsertintoDataTable(contact2);
+
+            // Insert Values of contact3 into Table.............
+            contact1.firstName = "Max";
+            contact1.lastName = "T";
+            contact1.phoneNumber = 9996543219;
+            contact1.emailId = "Max@yahoo.com";
+            contact1.address = "Anna Nagar";
+            contact1.city = "Mysore";
+            contact1.state = "Karanataka";
+            contact1.zipCode = 602132;
+            contact1.contactId = 1;
+            contact1.contactType = "Friend";
+            // Calling the insert table to insert the data..........
+            InsertintoDataTable(contact1);
+
+            // Insert Values of contact4 into Table.............
+            contact2.firstName = "Mark";
+            contact2.lastName = "V";
+            contact2.phoneNumber = 9876512999;
+            contact2.emailId = "Mark32@gmail.com";
+            contact2.address = "T-Nagar";
+            contact2.city = "Mysore";
+            contact2.state = "Karanataka";
+            contact2.zipCode = 602068;
+            contact2.contactId = 2;
+            contact2.contactType = "Profession";
+            InsertintoDataTable(contact2);
+
             // Returning the count of inserted data..............
             return dataTable.Rows.Count;
         }
