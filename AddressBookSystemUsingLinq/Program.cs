@@ -10,7 +10,7 @@ namespace AddressBookSystemUsingLinq
             Console.WriteLine("********************************************************************************************");
 
             ContactDataManager contactDataManager = new ContactDataManager();
-            contactDataManager.RetrieveDataBasedOnCityorState("Chennai", "TamilNadu");
+            contactDataManager.RetrieveCountBasedOnCityorState();
 
         }
     }

@@ -186,5 +186,33 @@ namespace AddressBookSystemUsingLinq
             }
             return nameList;
         }
+
+        public string RetrieveCountBasedOnCityorState()
+        {
+            AddValues();
+            string result = "";
+            var modifiedList = (from Contact in dataTable.AsEnumerable().GroupBy(r => new { City = r["City"], StateName = r["State"] }) select Contact);
+            Console.WriteLine("*****After Count of City And State");
+            foreach (var i in modifiedList)
+            {
+                result += i.Count() + " ";
+                Console.WriteLine("Count Key" + i.Key);
+                foreach (var dtRows in i)
+                {
+                    if (dtRows != null)
+                    {
+                        Console.WriteLine("{0} \t {1} \t {2} \t {3} \t {4} \t {5} \t {6} \t {7} \n", dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"]);
+                    }
+
+                    else
+                    {
+                        result = null;
+                    }
+                }
+            }
+            Console.WriteLine(result);
+            return result;
+
+        }
     }
 }
