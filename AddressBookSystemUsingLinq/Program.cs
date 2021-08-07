@@ -10,7 +10,9 @@ namespace AddressBookSystemUsingLinq
             Console.WriteLine("********************************************************************************************");
 
             ContactDataManager contactDataManager = new ContactDataManager();
-            contactDataManager.SortBasedOnNameInDataTable("Chennai");
+            contactDataManager.CreateDataTable();
+            contactDataManager.AddValues();
+            contactDataManager.Display();
 
         }
     }

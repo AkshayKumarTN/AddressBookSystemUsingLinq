@@ -74,6 +74,18 @@ namespace AddressBookSystemUsingLinq
             dtColumn.AutoIncrement = false;
             dataTable.Columns.Add(dtColumn);
 
+            dtColumn = new DataColumn();
+            dtColumn.DataType = typeof(Int64);
+            dtColumn.ColumnName = "ContactId";
+            dtColumn.AutoIncrement = false;
+            dataTable.Columns.Add(dtColumn);
+
+            dtColumn = new DataColumn();
+            dtColumn.DataType = typeof(string);
+            dtColumn.ColumnName = "ContactType";
+            dtColumn.AutoIncrement = false;
+            dataTable.Columns.Add(dtColumn);
+
         }
 
         // Method to Add Values in datatable...........
@@ -94,6 +106,8 @@ namespace AddressBookSystemUsingLinq
             contact1.city = "Chennai";
             contact1.state = "Tamilnadu";
             contact1.zipCode = 600132;
+            contact1.contactId = 1;
+            contact1.contactType = "Friend";
             // Calling the insert table to insert the data..........
             InsertintoDataTable(contact1);
 
@@ -106,13 +120,15 @@ namespace AddressBookSystemUsingLinq
             contact2.city = "Chennai";
             contact2.state = "Tamilnadu";
             contact2.zipCode = 600068;
+            contact2.contactId = 2;
+            contact2.contactType = "Profession";
             InsertintoDataTable(contact2);
             // Returning the count of inserted data..............
             return dataTable.Rows.Count;
         }
 
         // Method to Insert values in Data Table................
-        public void InsertintoDataTable(Contact contact)
+        public DataTable InsertintoDataTable(Contact contact)
         {
             DataRow dtRow = dataTable.NewRow();
             dtRow["FirstName"] = contact.firstName;
@@ -123,7 +139,10 @@ namespace AddressBookSystemUsingLinq
             dtRow["Zip"] = contact.zipCode;
             dtRow["PhoneNumber"] = contact.phoneNumber;
             dtRow["Email"] = contact.emailId;
+            dtRow["ContactId"] = contact.contactId;
+            dtRow["ContactType"] = contact.contactType;
             dataTable.Rows.Add(dtRow);
+            return dataTable;
 
         }
         // Method to Display all Values in Table...................
@@ -133,7 +152,8 @@ namespace AddressBookSystemUsingLinq
             Console.WriteLine("\n-------------Values in datatable------------\n");
             foreach (DataRow dtRows in dataTable.Rows)
             {
-                Console.WriteLine("{0} | {1} | {2} | {3} | {4} | {5} | {6} | {7}\n", dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"]);
+                Console.WriteLine("{0} | {1} | {2} | {3} |  {4} |  {5} |  {6} | {7} | {8} | {9}\n", dtRows["ContactId"], dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"], dtRows["ContactType"]);
+
             }
         }
 
@@ -202,6 +222,7 @@ namespace AddressBookSystemUsingLinq
                     if (dtRows != null)
                     {
                         Console.WriteLine("{0} \t {1} \t {2} \t {3} \t {4} \t {5} \t {6} \t {7} \n", dtRows["FirstName"], dtRows["LastName"], dtRows["Address"], dtRows["City"], dtRows["State"], dtRows["Zip"], dtRows["PhoneNumber"], dtRows["Email"]);
+
                     }
 
                     else
@@ -235,5 +256,7 @@ namespace AddressBookSystemUsingLinq
             }
             return result;
         }
+
+
     }
 }
